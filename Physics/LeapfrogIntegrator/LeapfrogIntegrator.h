@@ -40,9 +40,9 @@ namespace Physics {
 		virtual void integrate( double& systemTime, std::list<Particle<T,C> >& particles, T timeDelta ) {
 			for( Particle<T,C>& p : particles ) {
 				p.setPosition( equations->updatePosition( p.getPosition(),
-															   p.getVelocity(),
-															   p.getAcceleration(),
-															   timeDelta ) );
+									  p.getVelocity(),
+									  p.getAcceleration(),
+									  timeDelta ) );
 			}
 			std::list<C> oldAccelerations;
 			for( Particle<T,C>& p : particles ) {
@@ -52,9 +52,9 @@ namespace Physics {
 			auto iter = oldAccelerations.begin();
 			for( Particle<T,C>& p : particles ) {
 				p.setVelocity( equations->updateVelocity( p.getVelocity(),
-															   (*iter),
-															   p.getAcceleration(),
-															   timeDelta ) );
+								          (*iter),
+									  p.getAcceleration(),
+									  timeDelta ) );
 				iter++;
 				p.setParticleTime( p.getParticleTime() + timeDelta );
 			}
