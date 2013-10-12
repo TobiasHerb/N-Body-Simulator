@@ -75,9 +75,9 @@ namespace Physics {
 			w *= velocityScaling;
 
 			Particle<double, Math::Vector3D<double>> p( m, Math::Vector3D<double>( 0.0, 0.0, 0.0 ),
-														   Math::Vector3D<double>( 0.0, 0.0, 0.0 ),
-														   Math::Vector3D<double>( u, v, w ),
-														   Math::Vector3D<double>( x, y, z ) );
+								       Math::Vector3D<double>( 0.0, 0.0, 0.0 ),
+								       Math::Vector3D<double>( u, v, w ),
+								       Math::Vector3D<double>( x, y, z ) );
 			particles->push_back( p );
 		}
 		return particles;
