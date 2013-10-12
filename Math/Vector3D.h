@@ -50,30 +50,30 @@ namespace Math {
 
 		Vector3D<T> operator+( const Vector3D<T>& v ) const {
 			Vector3D<T> r( this->x + v.x,
-						   this->y + v.y,
-						   this->z + v.z );
+				       this->y + v.y,
+				       this->z + v.z );
 			return r;
 		}
 
 		Vector3D<T> operator-( const Vector3D<T>& v ) const {
 			Vector3D<T> r( this->x - v.x,
-						   this->y - v.y,
-						   this->z - v.z );
+				       this->y - v.y,
+				       this->z - v.z );
 			return r;
 		}
 
 		Vector3D<T> operator*( const T val ) const {
 			Vector3D<T> r( this->x * val,
-					       this->y * val,
-					       this->z * val );
+				       this->y * val,
+				       this->z * val );
 			return r;
 		}
 
 		Vector3D<T> operator/( const T val ) const {
 			T reciprocalVal = 1 / val;
 			Vector3D<T> r( this->x * reciprocalVal,
-						   this->y * reciprocalVal,
-						   this->z * reciprocalVal );
+				       this->y * reciprocalVal,
+				       this->z * reciprocalVal );
 			return r;
 		}
 
@@ -108,8 +108,8 @@ namespace Math {
 
 		T length() const {
 			return sqrt( ( this->x * this->x ) +
-						 ( this->y * this->y ) +
-						 ( this->z * this->z ) );
+				     ( this->y * this->y ) +
+				     ( this->z * this->z ) );
 		}
 
 		Vector3D<T> normalize() const {
@@ -118,14 +118,14 @@ namespace Math {
 
 		float operator*( const Vector3D<T> v ) const {
 			return ( this->x * v.X() +
-				     this->y * v.Y() +
-				     this->z * v.Z() );
+				 this->y * v.Y() +
+				 this->z * v.Z() );
 		}
 
 		Vector3D<T> cross( const Vector3D<T>& v ) {
 			Vector3D<T> r( this->y * v.Z() - this->z * v.Y(),
-						   this->z * v.X() - this->x * v.Z(),
-						   this->x * v.Y() - this->y * v.X() );
+				       this->z * v.X() - this->x * v.Z(),
+				       this->x * v.Y() - this->y * v.X() );
 			return r;
 		}
 
@@ -158,17 +158,15 @@ namespace Math {
 		std::string toString() const {
 			std::stringstream ss;
 			ss << "[" << this->x << ","
-					  << this->y << ","
-					  << this->z << "]";
+			          << this->y << ","
+			          << this->z << "]";
 			return ss.str();
 		}
 
 		bool operator==( const Vector3D<T>& v ) const {
 			if( this == &v )
 				return true;
-			if( this->x == v.x &&
-				this->y == v.y &&
-				this->z == v.z ) {
+			if( this->x == v.x && this->y == v.y && this->z == v.z ) {
 				return true;
 			}
 			// TODO: fulfills not exact equals contract...

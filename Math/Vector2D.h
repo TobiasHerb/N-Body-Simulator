@@ -142,8 +142,7 @@ namespace Math {
 		bool operator==( const Vector2D<T>& v ) const {
 			if( this == &v )
 				return true;
-			if( this->x == v.x &&
-				this->y == v.y ) {
+			if( this->x == v.x && this->y == v.y ) {
 				return true;
 			}
 			// TODO: fulfills not exact equals contract...
