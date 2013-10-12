@@ -17,7 +17,6 @@ namespace Physics {
 
 	template<typename T,typename C> class NumericIntegrator {
 	public:
-
 		virtual void integrate( double& systemTime, std::list<Particle<T,C>>& particles, T timeDelta ) = 0;
 
 		virtual EquationsBase<T,C>* getEquations() const = 0;

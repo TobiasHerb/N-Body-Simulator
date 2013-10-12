@@ -25,11 +25,11 @@ namespace Application {
 		}
 
 	private:
-		pthread_t 			thread;
+		pthread_t	thread;
 
-		static T* 			self;
+		static T*	self;
 
-		pthread_mutex_t		mutex;
+		pthread_mutex_t	mutex;
 
 	public:
 		static T* getInstance() {

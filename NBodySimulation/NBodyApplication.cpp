@@ -16,24 +16,25 @@
 
 namespace NBodySimulation {
 
-	const static int MENU_ENTRY_STOP 			= 1;
-	const static int MENU_ENTRY_PLAY 			= 2;
+	const static int MENU_ENTRY_STOP 		= 1;
+	const static int MENU_ENTRY_PLAY 		= 2;
 	const static int MENU_ENTRY_RESTART 		= 3;
 	const static int MENU_ENTRY_SHOW_VECTORS	= 4;
 	const static int MENU_ENTRY_SHOW_COM		= 5;
 	const static int MENU_ENTRY_SHOW_TRACE 		= 6;
 
-	const static std::string MENU_ENTRY_NAME_STOP 			= "Stop";
-	const static std::string MENU_ENTRY_NAME_PLAY 			= "Play";
-	const static std::string MENU_ENTRY_NAME_RESTART 		= "Restart";
+	const static std::string MENU_ENTRY_NAME_STOP 		= "Stop";
+	const static std::string MENU_ENTRY_NAME_PLAY 		= "Play";
+	const static std::string MENU_ENTRY_NAME_RESTART 	= "Restart";
 	const static std::string MENU_ENTRY_NAME_SHOW_VECTORS 	= "Show Vectors";
-	const static std::string MENU_ENTRY_NAME_SHOW_COM 		= "Show Center of Mass";
+	const static std::string MENU_ENTRY_NAME_SHOW_COM 	= "Show Center of Mass";
 	const static std::string MENU_ENTRY_NAME_SHOW_TRACE 	= "Show Particle Trace";
 
 	NBodyApplication::NBodyApplication( std::string name,
-										Math::Vector2D<int> position,
-										Math::Dimension2D<int> size ) :
-										OpenGLApplication( name, position, size ) {
+					    Math::Vector2D<int> position,
+					    Math::Dimension2D<int> size ) :
+					    OpenGLApplication( name, position, size ) {
+
 		this->simulationModel = new SimulationModel();
 		this->fileReader = new InputFileReader( this->simulationModel );
 	}

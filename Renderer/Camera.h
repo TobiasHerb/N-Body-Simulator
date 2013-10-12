@@ -29,14 +29,14 @@ namespace Renderer {
 		float rotZ;
 
 	public:
-		void move ( const Math::Vector3D<float>& direction );
-		void rotateX ( const float a );
-		void rotateY ( const float a );
-		void rotateZ ( const float a );
+		void move( const Math::Vector3D<float>& direction );
+		void rotateX( const float a );
+		void rotateY( const float a );
+		void rotateZ( const float a );
 
-		void moveForward ( const float distance );
-		void moveUpward ( const float distance );
-		void strafeRight ( const float distance );
+		void moveForward( const float distance );
+		void moveUpward( const float distance );
+		void strafeRight( const float distance );
 
 		void updateCamera();
 
@@ -46,9 +46,9 @@ namespace Renderer {
 		Math::Vector3D<float> getPositionVector() const;
 
 		void setCamera( const Math::Vector3D<float>& viewDirection,
-						const Math::Vector3D<float>& rightVector,
-						const Math::Vector3D<float>& upVector,
-						const Math::Vector3D<float>& position );
+				const Math::Vector3D<float>& rightVector,
+				const Math::Vector3D<float>& upVector,
+				const Math::Vector3D<float>& position );
 	};
 }
 

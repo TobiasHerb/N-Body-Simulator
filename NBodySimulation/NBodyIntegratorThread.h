@@ -26,16 +26,16 @@ namespace NBodySimulation {
 		virtual ~NBodyIntegratorThread();
 
 	private:
-		NBodyApplication::SimulationModel*	simulationModel;
-
-		Physics::NumericIntegrator<double,Math::Vector3D<double>>*	integrator;
-
 		bool	firstCall;
 
 		bool 	isWritten;
 
+		NBodyApplication::SimulationModel* simulationModel;
+
+		Physics::NumericIntegrator<double,Math::Vector3D<double>>* integrator;
+
 	public:
-		inline void setSimulationModel( NBodyApplication::SimulationModel*	simulationModel ) {
+		inline void setSimulationModel( NBodyApplication::SimulationModel* simulationModel ) {
 			this->simulationModel = simulationModel;
 		}
 

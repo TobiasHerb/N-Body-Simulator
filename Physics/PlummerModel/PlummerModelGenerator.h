@@ -23,6 +23,7 @@ namespace Physics {
 	class PlummerModelGenerator {
 	public:
 		PlummerModelGenerator();
+
 		virtual ~PlummerModelGenerator();
 
 	public:

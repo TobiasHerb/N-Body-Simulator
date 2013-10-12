@@ -46,11 +46,11 @@ namespace NBodySimulation {
 				file >> velz;
 
 				Physics::Particle<double,Math::Vector3D<double>> p(
-						mass,
-						Math::Vector3D<double>( 0.0, 0.0, 0.0 ),
-						Math::Vector3D<double>( 0.0, 0.0, 0.0 ),
-						Math::Vector3D<double>( velx, vely, velz ),
-						Math::Vector3D<double>( posx, posy, posz )
+					mass,
+					Math::Vector3D<double>( 0.0, 0.0, 0.0 ),
+					Math::Vector3D<double>( 0.0, 0.0, 0.0 ),
+					Math::Vector3D<double>( velx, vely, velz ),
+					Math::Vector3D<double>( posx, posy, posz )
 				);
 
 	    		particles->push_back( p );
@@ -88,11 +88,11 @@ namespace NBodySimulation {
 				file >> vely;
 				file >> velz;
 				Physics::Particle<double,Math::Vector3D<double>> p(
-						mass,
-						Math::Vector3D<double>( 0.0, 0.0, 0.0 ),
-						Math::Vector3D<double>( 0.0, 0.0, 0.0 ),
-						Math::Vector3D<double>( velx, vely, velz ),
-						Math::Vector3D<double>( posx, posy, posz )
+					mass,
+					Math::Vector3D<double>( 0.0, 0.0, 0.0 ),
+					Math::Vector3D<double>( 0.0, 0.0, 0.0 ),
+					Math::Vector3D<double>( velx, vely, velz ),
+					Math::Vector3D<double>( posx, posy, posz )
 				);
 				particles->push_back( p );
 			}

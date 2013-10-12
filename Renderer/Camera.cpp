@@ -38,7 +38,7 @@ namespace Renderer {
 		rotX = fmodf( rotX, 360.0f );
 		// rotate viewDirection around the right vector.
 		viewDirection.set( ( viewDirection * cos( Math::CommonMath::deg2rad( a ) ) ) +
-						   ( upVector * sin( Math::CommonMath::deg2rad( a ) ) ) ).normalize();
+				   ( upVector * sin( Math::CommonMath::deg2rad( a ) ) ) ).normalize();
 		// now compute the new upVector (by cross product).
 		upVector = ( viewDirection.cross( rightVector ) * (-1) );
 	}
@@ -48,7 +48,7 @@ namespace Renderer {
 		rotY = fmodf( rotY, 360.0f );
 		// rotate viewDirection around the up vector.
 		viewDirection.set( ( viewDirection * cos( Math::CommonMath::deg2rad( a ) ) ) -
-						   ( rightVector * sin( Math::CommonMath::deg2rad( a ) ) ) ).normalize();
+				   ( rightVector * sin( Math::CommonMath::deg2rad( a ) ) ) ).normalize();
 		// now compute the new rightVector (by cross product).
 		rightVector = ( viewDirection.cross( upVector ) );
 	}
@@ -58,7 +58,7 @@ namespace Renderer {
 		rotZ = fmodf( rotZ, 360.0f );
 		// rotate viewDirection around the right vector.
 		rightVector.set( ( rightVector * cos( Math::CommonMath::deg2rad( a ) ) ) +
-						 ( upVector * sin( Math::CommonMath::deg2rad( a ) ) ) );
+				 ( upVector * sin( Math::CommonMath::deg2rad( a ) ) ) );
 		// now compute the new upVector (by cross product).
 		upVector = ( viewDirection.cross( rightVector ) * (-1) );
 	}
@@ -101,9 +101,10 @@ namespace Renderer {
 	}
 
 	void Camera::setCamera( const Math::Vector3D<float>& viewDirection,
-							const Math::Vector3D<float>& rightVector,
-							const Math::Vector3D<float>& upVector,
-							const Math::Vector3D<float>& position ) {
+				const Math::Vector3D<float>& rightVector,
+				const Math::Vector3D<float>& upVector,
+				const Math::Vector3D<float>& position ) {
+
 		this->viewDirection = viewDirection;
 		this->rightVector = rightVector;
 		this->upVector = upVector;

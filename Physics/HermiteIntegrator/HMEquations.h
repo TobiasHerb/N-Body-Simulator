@@ -27,36 +27,39 @@ namespace Physics {
 
 	public:
 		virtual C updatePosition( C pred_position,
-								 C snap,
-								 C crackle,
-								 T timeDelta ) {
+					  C snap,
+					  C crackle,
+					  T timeDelta ) {
+
 			return pred_position + ( snap * ( pow( timeDelta, 4.0 ) / 24.0 ) ) + ( crackle * ( pow( timeDelta, 5.0 ) / 120.0 ) );
 		}
 
 		virtual C updateVelocity( C pred_velocity,
-								  C snap,
-								  C crackle,
-								  T timeDelta ) {
+					  C snap,
+					  C crackle,
+					  T timeDelta ) {
+
 			return pred_velocity + ( snap * ( pow( timeDelta, 3.0 ) / 6.0 ) ) + ( crackle * ( pow( timeDelta, 4.0 ) / 24.0 ) );
 		}
 
 		virtual C updatePositionPredictorStep( C position,
-											  C velocity,
-											  C acceleration,
-											  C jerk,
-											  T systemTime,
-											  T particleTime ) {
+						       C velocity,
+						       C acceleration,
+						       C jerk,
+						       T systemTime,
+		         			       T particleTime ) {
 
 			T timeDiff = systemTime - particleTime;
 			return position + ( velocity * timeDiff ) + acceleration * ( ( timeDiff * timeDiff ) / 2.0 ) + ( ( jerk * ( pow( timeDiff, 3.0 ) ) / 6.0 ) );
 		}
 
 		virtual C updateVelocityPredictorStep( C velocity,
-											   C acceleration,
-											   C jerk,
-											   T systemTime,
-											   T particleTime ) {
+						       C acceleration,
+						       C jerk,
+						       T systemTime,
+						       T particleTime ) {
 			T timeDiff = systemTime - particleTime;
+
 			return velocity + ( acceleration * timeDiff ) + ( jerk * ( pow( timeDiff, 2.0 ) / 2.0 ) );
 		}
 
@@ -103,26 +106,28 @@ namespace Physics {
 		}
 
 		virtual C updateSnap( C acceleration_old,
-							  C acceleration_new,
-							  C jerk_old,
-							  C jerk_new,
-							  T timeDelta ) {
+				      C acceleration_new,
+				      C jerk_old,
+				      C jerk_new,
+				      T timeDelta ) {
+
 			return ( ( ( acceleration_old - acceleration_new ) * (-6.0) ) - ( ( jerk_old * 4.0 + jerk_new * 2.0 ) * timeDelta ) )  / ( timeDelta * timeDelta );
 		}
 
 		virtual C updateCrackle( C acceleration_old,
-							  C acceleration_new,
-							  C jerk_old,
-							  C jerk_new,
-							  T timeDelta ) {
+					 C acceleration_new,
+					 C jerk_old,
+					 C jerk_new,
+					 T timeDelta ) {
+
 			return ( ( ( acceleration_old - acceleration_new ) * (12.0) ) + ( ( jerk_old + jerk_new ) * ( timeDelta * 6.0 ) ) ) / ( pow( timeDelta, 3.0 ) );
 		}
 
 		virtual T updateTimeStep( C acceleration_new,
-								  C jerk_new,
-								  C snap_new,
-								  C crackle_new,
-								  T eta ) {
+					  C jerk_new,
+					  C snap_new,
+					  C crackle_new,
+					  T eta ) {
 
 			return sqrt( eta * ( ( acceleration_new.length() * snap_new.length() + ( jerk_new.length() * jerk_new.length() ) ) /
 					( jerk_new.length() * crackle_new.length() + ( snap_new.length() * snap_new.length() ) ) ) );

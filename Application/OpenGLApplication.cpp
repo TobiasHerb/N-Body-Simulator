@@ -14,8 +14,8 @@ namespace Application {
 	OpenGLApplication* OpenGLApplication::self = 0L;
 
 	OpenGLApplication::OpenGLApplication( std::string name,
-			 	 	 	 	  	    Math::Vector2D<int> position,
-			 	 	 	 	  	    Math::Dimension2D<int> size ) {
+			 	 	      Math::Vector2D<int> position,
+			 	 	      Math::Dimension2D<int> size ) {
 		this->name = name;
 		this->position = position;
 		this->size = size;

@@ -18,7 +18,7 @@ namespace Physics {
 
 	enum IntegratorType {
 
-		INTEGRATOR_LEAPFROG = 0,
+		INTEGRATOR_LEAPFROG 	= 0,
 
 		INTEGRATOR_HERMITE	= 1
 	};
@@ -30,16 +30,14 @@ namespace Physics {
 				case INTEGRATOR_LEAPFROG: {
 					EquationsBase<T,C>* eqBase = new LFEquations<T,C>();
 					NumericIntegrator<T,C>* integrator =
-							new LeapfrogIntegrator<T,C>(
-									static_cast<LFEquations<T,C>*>( eqBase ) );
+							new LeapfrogIntegrator<T,C>( static_cast<LFEquations<T,C>*>( eqBase ) );
 					return integrator;
 				};
 				case INTEGRATOR_HERMITE: {
 					EquationsBase<T,C>* eqBase =
 							new HMEquations<T,C>();
 					NumericIntegrator<T,C>* integrator =
-							new HermiteIntegrator<T,C>(
-									static_cast<HMEquations<T,C>*>( eqBase ) );
+							new HermiteIntegrator<T,C>( static_cast<HMEquations<T,C>*>( eqBase ) );
 					return integrator;
 				};
 				default: {

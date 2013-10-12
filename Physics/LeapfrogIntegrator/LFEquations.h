@@ -21,18 +21,19 @@ namespace Physics {
 
 	public:
 		virtual C updatePosition( C position,
-								 C velocity,
-								 C acceleration,
-								 T timeDelta ) {
-			return position + ( velocity * timeDelta ) +
-					( ( acceleration * ( timeDelta * timeDelta ) ) / 2 );
+					  C velocity,
+					  C acceleration,
+					  T timeDelta ) {
+
+			return position + ( velocity * timeDelta ) + ( ( acceleration * ( timeDelta * timeDelta ) ) / 2 );
 		}
 
 
 		virtual C updateVelocity( C velocity,
-								 C accCurrent,
-								 C accNext,
-								 T timeDelta ) {
+					  C accCurrent,
+					  C accNext,
+					  T timeDelta ) {
+
 			return velocity + ( ( ( accCurrent + accNext ) * timeDelta ) / 2 );
 		}
 

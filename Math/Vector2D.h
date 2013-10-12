@@ -33,8 +33,8 @@ namespace Math {
 		}
 
 	private:
-		T x;
-		T y;
+		T 	x;
+		T 	y;
 
 	public:
 		Vector2D<T>& operator=( const Vector2D<T>& v ) {
@@ -45,26 +45,26 @@ namespace Math {
 
 		Vector2D<T> operator+( const Vector2D<T>& v ) const {
 			Vector2D<T> r( this->x + v.x,
-					       this->y + v.y );
+				       this->y + v.y );
 			return r;
 		}
 
 		Vector2D<T> operator-( const Vector2D<T>& v ) const {
 			Vector2D<T> r( this->x - v.x,
-					       this->y - v.y );
+				       this->y - v.y );
 			return r;
 		}
 
 		Vector2D<T> operator*( const T val ) const {
 			Vector2D<T> r( this->x * val,
-					       this->y * val );
+				       this->y * val );
 			return r;
 		}
 
 		Vector2D<T> operator/( const T val ) const {
 			T reciprocalVal = 1 / val;
 			Vector2D<T> r( this->x * reciprocalVal,
-						   this->y * reciprocalVal );
+				       this->y * reciprocalVal );
 			return r;
 		}
 
@@ -95,7 +95,7 @@ namespace Math {
 
 		T length() const {
 			return sqrt( ( this->x * this->x ) +
-					     ( this->y * this->y ) );
+				     ( this->y * this->y ) );
 		}
 
 		Vector2D<T> normalize() const {
@@ -104,7 +104,7 @@ namespace Math {
 
 		float operator*( const Vector3D<T> v ) const {
 			return ( this->x * v.X() +
-				     this->y * v.Y() );
+				 this->y * v.Y() );
 		}
 
 		Vector3D<T> cross( const Vector2D<T>& v ) {
@@ -135,7 +135,7 @@ namespace Math {
 		std::string toString() const {
 			std::stringstream ss;
 			ss << "[" << this->x << ","
-					  << this->y << "]";
+			          << this->y << "]";
 			return ss.str();
 		}
 

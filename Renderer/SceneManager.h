@@ -30,7 +30,7 @@ namespace Renderer {
 	protected:
 		Application::OpenGLApplication*		app;
 
-		Camera*								camera;
+		Camera*					camera;
 
 	public:
 		void renderScene();

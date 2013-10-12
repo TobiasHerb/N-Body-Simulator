@@ -52,15 +52,15 @@ namespace Math {
 
 		Point3D<T> operator+( const Vector3D<T>& v ) const {
 			Point3D<T> r( this->x + v.X(),
-					 	  this->y + v.Y(),
-					 	  this->z + v.Z() );
+				      this->y + v.Y(),
+				      this->z + v.Z() );
 			return r;
 		}
 
 		Point3D<T> operator-( const Vector3D<T>& v ) const {
 			Point3D<T> r( this->x - v.X(),
-						  this->y - v.Y(),
-						  this->z - v.Z() );
+				      this->y - v.Y(),
+				      this->z - v.Z() );
 			return r;
 		}
 
@@ -98,8 +98,8 @@ namespace Math {
 		std::string toString() const {
 			std::stringstream ss;
 			ss << "(" << this->x << ","
-					  << this->y << ","
-					  << this->z << ")";
+				  << this->y << ","
+				  << this->z << ")";
 			return ss.str();
 		}
 

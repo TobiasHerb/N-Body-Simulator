@@ -17,18 +17,19 @@ namespace NBodySimulation {
 
 	NBodySceneManager::NBodySceneManager( Application::OpenGLApplication* app )
 		: SceneManager( app ) {
+		
 		nBodyApp = static_cast<NBodySimulation::NBodyApplication*>( app );
 		this->simulationModel = nBodyApp->getSimulationModel();
 
 		camera->setCamera( Math::Vector3D<float>( 0.0f, -0.515038f, -0.857168f ),
-						   Math::Vector3D<float>( 1.0f, 0.0f, 0.0f ),
-						   Math::Vector3D<float>( -0.0f, 0.857168f, -0.515038f ),
-						   Math::Vector3D<float>( 0.0f, 8.61805f, 11.4286f ) );
+				   Math::Vector3D<float>( 1.0f, 0.0f, 0.0f ),
+				   Math::Vector3D<float>( -0.0f, 0.857168f, -0.515038f ),
+				   Math::Vector3D<float>( 0.0f, 8.61805f, 11.4286f ) );
 
 		/*camera->setCamera( Math::Vector3D<float>( 0, -0.515038, -0.857168 ),
-						   Math::Vector3D<float>( 1.0f, 0.0f, 0.0f ),
-						   Math::Vector3D<float>( -0, 0.857168, -0.515038 ),
-						   Math::Vector3D<float>( 0, 30.3013, 47.5152 ) );*/
+				     Math::Vector3D<float>( 1.0f, 0.0f, 0.0f ),
+				     Math::Vector3D<float>( -0, 0.857168, -0.515038 ),
+				     Math::Vector3D<float>( 0, 30.3013, 47.5152 ) );*/
 	}
 
 	NBodySceneManager::~NBodySceneManager() {
@@ -114,8 +115,8 @@ namespace NBodySimulation {
 			glPushMatrix();
 			glColor3f( 1.0, 1.0, 1.0 );
 			glTranslatef( p.getPosition().X(),
-						  p.getPosition().Y(),
-						  p.getPosition().Z() );
+				      p.getPosition().Y(),
+				      p.getPosition().Z() );
 			glutSolidSphere( 0.03f , 10, 10 );
 			glPopMatrix();
 
@@ -140,8 +141,8 @@ namespace NBodySimulation {
 			glPushMatrix();
 			glColor3f( 0.0, 1.0, 0.0 );
 			glTranslatef( this->simulationModel->centerOfMassPosition.X(),
-						  this->simulationModel->centerOfMassPosition.Y(),
-						  this->simulationModel->centerOfMassPosition.Z() );
+				      this->simulationModel->centerOfMassPosition.Y(),
+				      this->simulationModel->centerOfMassPosition.Z() );
 			glutSolidSphere( 0.03f , 10, 10 );
 			glPopMatrix();
 		}
@@ -152,12 +153,12 @@ namespace NBodySimulation {
 	void NBodySceneManager::drawNet( float size, int lx, int lz ) {
 		glBegin( GL_LINES );
 		for( int xc = 0; xc < lx; xc++ ) {
-			glVertex3f(	-size / 2.0 + xc / (float)(lx - 1) * size, 0.0, size / 2.0 );
-			glVertex3f(	-size / 2.0 + xc / (float)(lx - 1) * size, 0.0, size / -2.0);
+			glVertex3f( -size / 2.0 + xc / (float)(lx - 1) * size, 0.0, size / 2.0 );
+			glVertex3f( -size / 2.0 + xc / (float)(lx - 1) * size, 0.0, size / -2.0);
 		}
 		for( int zc = 0; zc < lz; zc++ ) {
-			glVertex3f(	size / 2.0, 0.0, -size / 2.0 + zc / (float)(lz - 1) * size );
-			glVertex3f(	size / -2.0, 0.0, -size / 2.0 + zc / (float)(lz - 1) * size );
+			glVertex3f( size / 2.0, 0.0, -size / 2.0 + zc / (float)(lz - 1) * size );
+			glVertex3f( size / -2.0, 0.0, -size / 2.0 + zc / (float)(lz - 1) * size );
 		}
 		glEnd();
 	}
@@ -165,8 +166,8 @@ namespace NBodySimulation {
 	void NBodySceneManager::drawArrow( Math::Vector3D<double> s, Math::Vector3D<double> d ) {
 		Math::Vector3D<double> v = ( s + ( d.normalize() / 2 ) );
 		glBegin( GL_LINES );
-			glVertex3f(	s.X(), s.Y(), s.Z() );
-			glVertex3f(	v.X(), v.Y(), v.Z() );
+			glVertex3f( s.X(), s.Y(), s.Z() );
+			glVertex3f( v.X(), v.Y(), v.Z() );
 		glEnd();
 	}
 
@@ -179,8 +180,8 @@ namespace NBodySimulation {
 
 	void NBodySceneManager::drawLine( Math::Vector3D<double> a, Math::Vector3D<double> b ) {
 		glBegin( GL_LINES );
-			glVertex3f(	a.X(), a.Y(), a.Z() );
-			glVertex3f(	b.X(), b.Y(), b.Z() );
+			glVertex3f( a.X(), a.Y(), a.Z() );
+			glVertex3f( b.X(), b.Y(), b.Z() );
 		glEnd();
 	}
 }

@@ -26,23 +26,24 @@ namespace Physics {
 	public:
 		/*
 		virtual C updatePositionPredictorStep( C position,
-											   C velocity,
-											   C acceleration,
-											   C jerk,
-											   T timeDelta ) {
-			return position +
-				   ( velocity * timeDelta ) +
-				   ( acceleration * ( 1.0 / 2.0 ) * pow( timeDelta, 2.0 ) ) +
-				   ( jerk * ( 1.0 / 6.0 ) * pow( timeDelta, 3.0 ) );
+						       C velocity,
+						       C acceleration,
+						       C jerk,
+						       T timeDelta ) {
+
+			return position + ( velocity * timeDelta ) +
+			       ( acceleration * ( 1.0 / 2.0 ) * pow( timeDelta, 2.0 ) ) +
+			       ( jerk * ( 1.0 / 6.0 ) * pow( timeDelta, 3.0 ) );
 		}
 
 		virtual C updateVelocityPredictorStep( C velocity,
-											   C acceleration,
-											   C jerk,
-											   T timeDelta ) {
+      						       C acceleration,
+						       C jerk,
+						       T timeDelta ) {
+
 			return velocity +
-				   ( acceleration * timeDiff ) +
-				   ( jerk * ( 1.0 / 2.0 ) * pow( timeDelta, 2.0 ) ) );
+			       ( acceleration * timeDiff ) +
+			       ( jerk * ( 1.0 / 2.0 ) * pow( timeDelta, 2.0 ) ) );
 		}
 		*/
 	};

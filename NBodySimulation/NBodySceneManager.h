@@ -28,7 +28,7 @@ namespace NBodySimulation {
 	private:
 		friend class NBodySimulation::NBodyApplication;
 
-		NBodySimulation::NBodyApplication*	nBodyApp;
+		NBodySimulation::NBodyApplication*			nBodyApp;
 
 		NBodySimulation::NBodyApplication::SimulationModel*	simulationModel;
 

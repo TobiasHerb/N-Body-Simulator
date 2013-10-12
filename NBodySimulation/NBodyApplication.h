@@ -34,18 +34,18 @@ namespace NBodySimulation {
 				this->isSimulationRunning 	= true;
 				this->areVectorsShown 		= false;
 				this->isCenterOfMassShown	= false;
-				this->startTime 			= 0;
-				this->elapsedTime 			= 0;
+				this->startTime 		= 0;
+				this->elapsedTime 		= 0;
 				this->kineticEnergy 		= 0;
 				this->potentialEnergy 		= 0;
-				this->totalEnergy 			= 0;
+				this->totalEnergy 		= 0;
 				this->totalEnergyStartup	= -1.0;
-				this->particles 			= 0L;
+				this->particles 		= 0L;
 				this->initialParticles 		= 0L;
 				this->isSimulationFinished	= false;
 				this->isTraceModeEnabled	= false;
 				this->integratorType		= Physics::IntegratorType::INTEGRATOR_LEAPFROG;
-				this->systemTime			= 0.0;
+				this->systemTime		= 0.0;
 			}
 
 			~_SimulationModel() {
@@ -85,29 +85,29 @@ namespace NBodySimulation {
 
 			double 				systemTime;
 
-			Math::Vector3D<double>	centerOfMassPosition;
+			Math::Vector3D<double>		centerOfMassPosition;
+
+			Physics::IntegratorType 	integratorType;
 
 			std::list<Physics::Particle<double,Math::Vector3D<double>>>* particles;
 
 			std::list<Physics::Particle<double,Math::Vector3D<double>>>* initialParticles;
 
-			Physics::IntegratorType integratorType;
-
 		} SimulationModel;
 
 	public:
 		NBodyApplication( std::string name,
-				 	 	  Math::Vector2D<int> position,
-				 	 	  Math::Dimension2D<int> size );
+				  Math::Vector2D<int> position,
+				  Math::Dimension2D<int> size );
 
 		virtual ~NBodyApplication();
 
 	private:
-		NBodySimulation::InputFileReader*			fileReader;
+		NBodySimulation::InputFileReader*	fileReader;
 
-		SimulationModel*							simulationModel;
+		SimulationModel*			simulationModel;
 
-		NBodyIntegratorThread*						integratorThread;
+		NBodyIntegratorThread*			integratorThread;
 
 	public:
 		void initialize( int argc, char **argv );

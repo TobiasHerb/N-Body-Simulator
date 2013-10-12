@@ -18,73 +18,65 @@ namespace Physics {
 	template<typename T, typename C> class Particle {
 	public:
 		Particle() {
-			this->mass = 0;
-
-			this->time			= 0;
+			this->mass 		= 0;
+			this->time		= 0;
 			this->timeStep		= 0.00000000000001;
 		}
 
 		Particle( T mass, C jerk, C acceleration, C velocity, C position ) {
-			this->mass = mass;
-			this->jerk = jerk;
-			this->acceleration = acceleration;
-			this->velocity = velocity;
-			this->position = position;
-
-			this->time			= 0;
+			this->mass 		= mass;
+			this->jerk 		= jerk;
+			this->acceleration 	= acceleration;
+			this->velocity 		= velocity;
+			this->position 		= position;
+			this->time		= 0;
 			this->timeStep		= 0.0000001;
 		}
 
 		Particle( const Particle<T,C>& p ) {
-			this->mass 			= p.mass;
-			this->jerk			= p.jerk;
+			this->mass		= p.mass;
+			this->jerk		= p.jerk;
 			this->acceleration 	= p.acceleration;
 			this->velocity 		= p.velocity;
 			this->position 		= p.position;
-			//
+			this->time		= p.time;
+			this->timeStep		= p.timeStep;
 			this->predicted_position = p.predicted_position;
 			this->predicted_velocity = p.predicted_velocity;
-			//
-			this->time			= p.time;
-			this->timeStep		= p.timeStep;
-			//
 		}
 
 	private:
 		T 	mass;
+
 		C 	acceleration;
+
 		C	velocity;
+
 		C 	position;
+
 		C	jerk;
 
-		//
 		C	predicted_position;
+
 		C	predicted_velocity;
-		//
 
-		//
-		std::list<C>	particleTrace;
-		//
-
-		//
 		T	time;
+
 		T	timeStep;
-		//
+
+		std::list<C>	particleTrace;
 
 	public:
 		Particle<T,C>& operator=( const Particle<T,C>& p ) {
-			this->mass 			= p.mass;
-			this->jerk			= p.jerk;
+			this->mass 		= p.mass;
+			this->jerk		= p.jerk;
 			this->acceleration 	= p.acceleration;
 			this->velocity 		= p.velocity;
 			this->position 		= p.position;
-			//
+			this->time		= p.time;
+			this->timeStep		= p.timeStep;
 			this->predicted_position = p.predicted_position;
 			this->predicted_velocity = p.predicted_velocity;
-			//
-			this->time			= p.time;
-			this->timeStep		= p.timeStep;
-			//
 			return (*this);
 		}
 
@@ -163,21 +155,21 @@ namespace Physics {
 		}
 
 		void set( T mass, C jerk, C acceleration, C velocity, C position ) {
-			this->mass = mass;
-			this->jerk = jerk;
-			this->acceleration = acceleration;
-			this->velocity = velocity;
-			this->position = position;
+			this->mass 		= mass;
+			this->jerk 		= jerk;
+			this->acceleration 	= acceleration;
+			this->velocity 		= velocity;
+			this->position 		= position;
 		}
 
 		//
 		void set( T mass, C jerk, C acceleration, C velocity, C position,
 				  C predicted_position, C predicted_velocity /*, C predicted_acceleration, C predicted_jerk*/ ) {
-			this->mass = mass;
-			this->jerk = jerk;
-			this->acceleration = acceleration;
-			this->velocity = velocity;
-			this->position = position;
+			this->mass 		= mass;
+			this->jerk 		= jerk;
+			this->acceleration 	= acceleration;
+			this->velocity 		= velocity;
+			this->position 		= position;
 			this->predicted_position = predicted_position;
 			this->predicted_velocity = predicted_velocity;
 		}

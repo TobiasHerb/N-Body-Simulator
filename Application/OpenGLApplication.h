@@ -32,8 +32,8 @@ namespace Application {
 	class OpenGLApplication {
 	public:
 		OpenGLApplication( std::string name,
-					 	   Math::Vector2D<int> position,
-					 	   Math::Dimension2D<int> size );
+				   Math::Vector2D<int> position,
+				   Math::Dimension2D<int> size );
 
 		virtual ~OpenGLApplication();
 
@@ -44,13 +44,13 @@ namespace Application {
 
 		Math::Vector2D<int>		position;
 
-		Math::Dimension2D<int>	size;
+		Math::Dimension2D<int>		size;
 
 		std::string 			name;
 
-		int 					argc;
+		int 				argc;
 
-		char**					argv;
+		char**				argv;
 
 	protected:
 		Renderer::SceneManager*	sceneManager;

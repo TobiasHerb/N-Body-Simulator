@@ -22,8 +22,8 @@ int main(int argc, char **argv) {
 
 	Application::OpenGLApplication* app =
 			new NBodySimulation::NBodyApplication( "Numerical N body simulation",
-												   Math::Vector2D<int>( 100, 100 ),
-												   Math::Dimension2D<int>( 800, 600 ) );
+							       Math::Vector2D<int>( 100, 100 ),
+							       Math::Dimension2D<int>( 800, 600 ) );
 
 	// fake injection... for testing.
 	if( argc != 2 ) {

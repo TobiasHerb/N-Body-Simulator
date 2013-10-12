@@ -25,9 +25,9 @@ namespace Physics {
 			this->equations = equations;
 			this->firstCall = true;
 			this->ETA_S	= 0.01;
-			this->ETA = 0.02;
-			this->dt_min = pow( 2.0, -23.0 );
-			this->dt_max = 0.125;
+			this->ETA 	= 0.02;
+			this->dt_min 	= pow( 2.0, -23.0 );
+			this->dt_max 	= 0.125;
 		}
 
 		virtual ~HermiteIntegrator() {
@@ -40,7 +40,7 @@ namespace Physics {
 	private:
 		HMEquations<T,C>* equations;
 
-		bool 			  firstCall;
+		bool	  firstCall;
 
 		double 	  ETA_S;
 
@@ -78,16 +78,17 @@ namespace Physics {
 					p.setJerk( Math::Vector3D<double>( 10.0, 10.0, 10.0 ) );
 
 					p.setPredictedVelocity( equations->updateVelocityPredictorStep( p.getVelocity(),
-																					p.getAcceleration(),
-																					p.getJerk(),
-																					dt_min,
-																					p.getParticleTime() ) );
+													p.getAcceleration(),
+													p.getJerk(),
+													dt_min,
+													p.getParticleTime() ) );
+					
 					p.setPredictedPosition( equations->updatePositionPredictorStep( p.getPosition(),
-																					p.getVelocity(),
-																					p.getAcceleration(),
-																					p.getJerk(),
-																					dt_min,
-																					p.getParticleTime() ) );
+													p.getVelocity(),
+													p.getAcceleration(),
+													p.getJerk(),
+													dt_min,
+													p.getParticleTime() ) );
 
 					p.setAcceleration( equations->updateAcceleration( p, particles ) );
 					p.setJerk( equations->updateJerk( p, particles ) );
@@ -101,16 +102,17 @@ namespace Physics {
 						if( p.getJerk().Z() == 0.0 ) p.getJerk().set( p.getJerk().X(), p.getJerk().Y(), pow( 1.0, -5.0 ) );
 
 						p.setPredictedVelocity( equations->updateVelocityPredictorStep( p.getVelocity(),
-																						p.getAcceleration(),
-																						p.getJerk(),
-																						dt_min,
-																						p.getParticleTime() ) );
+														p.getAcceleration(),
+														p.getJerk(),
+														dt_min,
+														p.getParticleTime() ) );
+						
 						p.setPredictedPosition( equations->updatePositionPredictorStep( p.getPosition(),
-																						p.getVelocity(),
-																						p.getAcceleration(),
-																						p.getJerk(),
-																						dt_min,
-																						p.getParticleTime() ) );
+														p.getVelocity(),
+														p.getAcceleration(),
+														p.getJerk(),
+														dt_min,
+														p.getParticleTime() ) );
 
 						p.setAcceleration( equations->updateAcceleration( p, particles ) );
 						p.setJerk( equations->updateJerk( p, particles ) );
@@ -160,20 +162,18 @@ namespace Physics {
 
 			// predictor step with ALL PARTICLES
 			for( Particle<T,C>& p : particles ) {
-				p.setPredictedPosition( equations->updatePositionPredictorStep(
-															 p.getPosition(),
-															 p.getVelocity(),
-															 p.getAcceleration(),
-															 p.getJerk(),
-															 minTime,
-															 p.getParticleTime() ) );
+				p.setPredictedPosition( equations->updatePositionPredictorStep( p.getPosition(),
+												p.getVelocity(),
+												p.getAcceleration(),
+												p.getJerk(),
+												minTime,
+												p.getParticleTime() ) );
 
-				p.setPredictedVelocity( equations->updateVelocityPredictorStep(
-															 p.getVelocity(),
-															 p.getAcceleration(),
-															 p.getJerk(),
-															 minTime,
-															 p.getParticleTime() ) );
+				p.setPredictedVelocity( equations->updateVelocityPredictorStep( p.getVelocity(),
+												p.getAcceleration(),
+												p.getJerk(),
+												minTime,
+												p.getParticleTime() ) );
 			}
 
 			for( Particle<T,C>* p : activeParticles ) { // <- active particles.
@@ -186,37 +186,37 @@ namespace Physics {
 				C jerk_old = p->getJerk();
 				p->setJerk( equations->updateJerk( (*p), particles ) );
 
-				C snap_old = equations->updateSnap( acceleration_old,
-													p->getAcceleration(),
-													jerk_old,
-													p->getJerk(),
-													p->getTimeStep() );
+				C snap_old = equations->updateSnap( acceleration_old, 
+								    p->getAcceleration(),
+								    jerk_old,
+								    p->getJerk(),
+								    p->getTimeStep() );
 
 				C crackle_old = equations->updateCrackle( acceleration_old,
-														  p->getAcceleration(),
-														  jerk_old,
-														  p->getJerk(),
-														  p->getTimeStep() );
+									  p->getAcceleration(),
+									  jerk_old,
+									  p->getJerk(),
+									  p->getTimeStep() );
 
 				// corrector_step()
 				p->setVelocity( equations->updateVelocity( p->getPredictedVelocity(),
-														   snap_old,
-														   crackle_old,
-														   p->getTimeStep() ) );
+									   snap_old,
+									   crackle_old,
+									   p->getTimeStep() ) );
 
 				p->setPosition( equations->updatePosition( p->getPredictedPosition(),
-														   snap_old,
-														   crackle_old,
-														   p->getTimeStep() ) );
+									   snap_old,
+									   crackle_old,
+									   p->getTimeStep() ) );
 
 				C snap_new = snap_old + crackle_old * p->getTimeStep();
 				C crackle_new = crackle_old;
 
 				double newTimeStep = equations->updateTimeStep( p->getAcceleration(),
-														  p->getJerk(),
-														  snap_new,
-														  crackle_new,
-														  ETA );
+									        p->getJerk(),
+										snap_new,
+										crackle_new,
+										ETA );
 
 				double dt_tmp = p->getTimeStep();
 				if( newTimeStep < dt_min )
